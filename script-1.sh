@@ -4,3 +4,5 @@
 #message styler
 
 echo "hey"
+
+echo "hi"
