@@ -1,12 +1,4 @@
 #!/usr/bin/env bash
-# Name: <Colton Anderson>
-# Course: CS 3030 (Scripting Languages)
-#message styler
-
-
-
-#cat > style.sh <<'EOF'
-#!/usr/bin/env bash
 # Name: Your Name | CS 3030 | Module 2 (Tutorial)
 
 usage() {
@@ -30,10 +22,3 @@ if [[ "${1:-}" == "-h" ]]; then
 fi
 
 echo "Hello, $name!"
-#EOF
-
-
-
-echo "hey"
-
-echo "hi"
