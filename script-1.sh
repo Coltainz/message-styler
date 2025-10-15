@@ -53,6 +53,12 @@ while getopts ":hn:c:u" opt; do
   esac
 done
 
+shift $((OPTIND-1))
+custom="${1:-}"
+
+msg="${custom:-Hello, $name!}"
+
+
 #taskb
 # before getopts       : count=1
 # inside getopts string: c:
@@ -71,7 +77,7 @@ echo "Hello, $name!"
 done
 
 
-msg="Hello, $name!"
+#msg="Hello, $name!"
 
 for ((i=1; i<=count; i++)); do
    if [ "$upper" = true ]; then
