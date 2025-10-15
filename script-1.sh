@@ -15,10 +15,11 @@ Usage: ${0##*/} [-h] [-n NAME]
 Options:
   -h        Show this help message
   -n NAME   Greet NAME (default: stranger)
-
+  -c COUNT  Repeat Greeting
 Examples:
   ${0##*/} -n Mackenzie
   ${0##*/} -h
+  ${0##*/} -c
 TXT
 }
 
@@ -36,17 +37,36 @@ error() {
 }
 
 name="stranger"
+count=1
 
-while getopts ":hn:" opt; do
+#taska
+#also changed some stuff here for taskb
+while getopts ":hn:c:" opt; do
   case "$opt" in
     h) usage; exit 0 ;;
     n) name="$OPTARG" ;;
+    c) count="$OPTARG";;
     \?) error "Unknown option: -$OPTARG" ;;
     :)  error "Missing argument for -$OPTARG" ;;
   esac
 done
 
+#taskb
+# before getopts       : count=1
+# inside getopts string: c:
+# inside getopts loop : c) count="$OPTARG" ;;
+
+# after the loop:
+# validate: count must be a positive integer (>=1)
+
+
+if ! [[ "$count" =~ ^[1-9][0-9]*$ ]]; then
+error "COUNT must be a positive integer (>=1)."
+fi
+
+for ((i=1; i<=count; i++)); do
 echo "Hello, $name!"
+done
 #EOF
 
 
