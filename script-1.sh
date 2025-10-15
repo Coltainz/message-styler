@@ -38,14 +38,16 @@ error() {
 
 name="stranger"
 count=1
+upper=false
 
 #taska
 #also changed some stuff here for taskb
-while getopts ":hn:c:" opt; do
+while getopts ":hn:c:u" opt; do
   case "$opt" in
     h) usage; exit 0 ;;
     n) name="$OPTARG" ;;
     c) count="$OPTARG";;
+    u) upper=true;;
     \?) error "Unknown option: -$OPTARG" ;;
     :)  error "Missing argument for -$OPTARG" ;;
   esac
@@ -67,6 +69,17 @@ fi
 for ((i=1; i<=count; i++)); do
 echo "Hello, $name!"
 done
+
+
+msg="Hello, $name!"
+
+for ((i=1; i<=count; i++)); do
+   if [ "$upper" = true ]; then
+       echo "$msg" | tr '[:lower:]' '[:upper:]'
+   else
+       echo "$msg"
+   fi
+done 
 #EOF
 
 
